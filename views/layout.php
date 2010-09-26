@@ -5,7 +5,7 @@
     <title>1kb MVC Framework</title>
 	<style>
 	body { margin: 0; padding: 0; font: 12px Arial; }
-	#content { margin: 0 auto; width: 500px; }
+	#container { margin: 0 auto; width: 500px; }
 	</style>
 </head>
 <body>
