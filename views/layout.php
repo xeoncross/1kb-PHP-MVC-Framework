@@ -15,6 +15,8 @@
 	</div>
 	<div id="content">
 		<?php print $content; ?>
+		
+		<?php if(c('debug_mode')) include('debug.php'); ?>
 	</div>
 </div>
 </body>
