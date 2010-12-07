@@ -1,17 +1,20 @@
 <div style="margin: 5em 0;padding:2em;background:#ECF5FA;color:#000;clear:both;">
 
-<b>Peak Memory Usage</b>
+<b>Benchmarks</b>
 <pre>
-<?php print number_format(memory_get_peak_usage()); ?> bytes
+<?php print round(microtime(TRUE)-T,5); ?> ms
+<?php print number_format(memory_get_usage()-M); ?> bytes
+<?php print number_format(memory_get_usage()); ?> bytes (process)
+<?php print number_format(memory_get_peak_usage(TRUE)); ?> bytes (process peak)
 </pre>
 
 <b>URL</b>
 <pre><?php print implode('/',url()); ?></pre>
 
-<?php if(class_exists('db', FALSE))
+<?php if(class_exists('DB', FALSE)&&DB::$q)
 {
-	print '<b>'. count(db::$q). ' Database Queries</b>';
-	foreach(db::$q as $query)
+	print '<b>'. count(DB::$q). ' Database Queries</b>';
+	foreach(DB::$q as $query)
 	{
 		print '<pre style="background:#fff">'. $query. '</pre>';
 	}

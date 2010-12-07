@@ -1,1 +1,11 @@
-<?php function p($f){return __DIR__.str_replace('_','/',"/$f.php");}function url($k=-1){static$u;$u=$u?:explode('/',trim(preg_replace('/([^\w\/])/i','',current(explode('?',$_SERVER['REQUEST_URI'],2))),'/'));return$k!=-1?v($u[$k]):$u;}function v(&$v,$d=NULL){return isset($v)?$v:$d;}function __autoload($c){require p("classes/$c");}function c($k){static$c;$c=$c?$c:require p('config');return$c[$k];}function _log($m){file_put_contents('log/.'.date('Y-m-d'),time()." $m\n",FILE_APPEND);}set_error_handler(function($c,$e,$f=0,$l=0){$v=new View('error');$v->e=$e;echo$v;_log("$e [$f:$l]");});class View{function View($v){$this->v=p("views/$v");}function set($a){foreach($a as$k=>$v)$this->$k=$v;}function __toString(){extract((array)$this);require$v;return'';}}class C{function r(){$l=new View('layout');$l->set($this);echo$l;}}$c='controller_'.(url(0)?:'home');$m=url(1)?:'index';if(!is_file(p("classes/$c"))||!($c=new$c)||!method_exists($c,$m))exit(new View('404'));call_user_func_array(array($c,$m),array_slice(url(),2)); //-
+<?php
+// Setup system and load controller
+define('T',microtime(TRUE));
+define('M',memory_get_usage());
+require('functions.php');
+define('AJAX',isset($_SERVER['HTTP_X_REQUESTED_WITH'])&&strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])==='xmlhttprequest');
+require('bootstrap.php');
+set_error_handler(function($c,$e,$f=0,$l=0){$v=new View('error');$v->e=$e;$v->f=$f;$v->l=$l;echo$v;_log("$e [$f:$l]");});
+set_exception_handler(function($e){$v=new View('exception');$v->e=$e;_log($e->getMessage().' '.$e->getFile());die($v);});
+$c='controller_'.(url(0)?:'home');$m=url(1)?:'index';if(!is_file(p("classes/$c"))||!($c=new$c)||!method_exists($c,$m)){$c=new controller;$m='show_404';}
+call_user_func_array(array($c,$m),array_slice(url(),2));

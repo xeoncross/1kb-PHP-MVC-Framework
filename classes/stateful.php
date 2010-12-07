@@ -2,7 +2,7 @@
 // Track object changes
 class Stateful
 {
-protected$d=array(),$c=array();
+protected$d=array(),$c=array(),$l;
 function set($a){foreach($a as$k=>$v)$this->$k=$v;}
 function __set($k,$v){$t=$this;if(!array_key_exists($k,$t->d)OR$t->d[$k]!==$v){$t->d[$k]=$v;$t->c[$k]=$k;}}
 function __get($k){return array_key_exists($k,$this->d)?$this->d[$k]:NULL;}
