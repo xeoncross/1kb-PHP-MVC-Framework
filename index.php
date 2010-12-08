@@ -2,8 +2,8 @@
 // Setup system and load controller
 define('T',microtime(TRUE));
 define('M',memory_get_usage());
+define('AJAX',strtolower(getenv('HTTP_X_REQUESTED_WITH'))==='xmlhttprequest');
 require('functions.php');
-define('AJAX',isset($_SERVER['HTTP_X_REQUESTED_WITH'])&&strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])==='xmlhttprequest');
 require('bootstrap.php');
 set_error_handler(function($c,$e,$f=0,$l=0){$v=new View('error');$v->e=$e;$v->f=$f;$v->l=$l;echo$v;_log("$e [$f:$l]");});
 set_exception_handler(function($e){$v=new View('exception');$v->e=$e;_log($e->getMessage().' '.$e->getFile());die($v);});
