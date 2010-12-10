@@ -1,4 +1,4 @@
-<?php
+<?php defined('T') OR die();
 // Global site configuration
 $config = array(
 

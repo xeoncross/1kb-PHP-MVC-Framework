@@ -1,4 +1,4 @@
-<!DOCTYPE html><?php function_exists('p') OR die('Forbidden');?>
+<!DOCTYPE html><?php defined('T') OR die(); ?>
 <html>
 <head>
 	<meta charset="utf-8"> 

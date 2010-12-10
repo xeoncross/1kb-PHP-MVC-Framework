@@ -4,8 +4,25 @@ class controller_home Extends Controller
 	// Welcome page!
 	public function index()
 	{
-		$this->content = new View('welcome');
-		$this->render();
+		$this->content = new View('home/index');
+	}
+	
+	// Show how to pass parameters over the URI
+	public function param($value1 = NULL, $value2 = NULL)
+	{
+		$view = new View('home/param');
+		
+		$view->value1 = $value1;
+		$view->value2 = $value2;
+		// OR
+		/*
+		$view->set(array(
+			'value1' => $value1, 
+			'value2' => $value2
+		));
+		*/
+		
+		$this->content = $view;
 	}
 	
 	// Example exception handling
@@ -42,7 +59,5 @@ class controller_home Extends Controller
 		
 		// Save session
 		Cookie::set('session',$_SESSION);
-		
-		$this->render();
 	}
 }

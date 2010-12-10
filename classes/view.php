@@ -1,5 +1,5 @@
 <?php
-// Handles working with HTML ouput templates
+// Handles working with HTML output templates
 class View
 {
 function __construct($v){$this->v=p("views/$v");}

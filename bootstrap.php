@@ -1,4 +1,4 @@
-<?php
+<?php defined('T') OR die();
 /*
  * EDIT THIS FILE TO SETUP SYSTEM STATE
  * If posible, these should be set in the php.ini instead of here!

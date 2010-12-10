@@ -1,4 +1,4 @@
-<?php function_exists('p') OR die(); headers_sent() OR header('HTTP/1.0 500 Internal Server Error'); ?>
+<?php defined('T') OR die(); headers_sent() OR header('HTTP/1.0 500 Internal Server Error'); ?>
 <!doctype html>
 <head>
 	<meta charset="utf-8">

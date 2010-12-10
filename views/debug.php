@@ -1,3 +1,4 @@
+<?php defined('T') OR die(); ?>
 <div style="margin: 5em 0;padding:2em;background:#ECF5FA;color:#000;clear:both;">
 
 <b>Benchmarks</b>
